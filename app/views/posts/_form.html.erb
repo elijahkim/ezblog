@@ -1,0 +1,18 @@
+<%= form_for post do |f| %>
+  <% if post.errors.any? %>
+    <%= pluralize(post.errors.count, "error") %> prevented your post from being created:
+    <ul>
+      <% post.errors.full_messages.each do |error_message| %>
+        <li><%= error_message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+
+  <%= f.submit %>
+<% end %>
