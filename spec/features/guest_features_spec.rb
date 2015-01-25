@@ -11,4 +11,12 @@ RSpec.feature "A guest lands on the landing page" do
 
     expect(page).to have_content "Signed up successfully"
   end
+
+  scenario "A guest can sign in" do
+    user = create(:user)
+    sign_in(user)
+    visit dashboard_path
+
+    expect(page).to have_content "#{user.email}'s Dashboard"
+  end
 end
