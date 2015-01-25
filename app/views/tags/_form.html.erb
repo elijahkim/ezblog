@@ -1,0 +1,14 @@
+<%= form_for [post, tag] do |f| %>
+  <% if tag.errors.any? %>
+    <%= pluralize(@tag.errors.count, "error") %> prevented your tag from being created:
+    <ul>
+      <% @tag.errors.full_messages.each do |error_message| %>
+        <li><%= error_message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.submit %>
+<% end %>
