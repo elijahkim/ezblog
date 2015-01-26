@@ -29,6 +29,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def index
+    @posts = Post.all.order(created_at: :desc)
+  end
+
   def destroy
     Post.find(params[:id]).destroy
 
