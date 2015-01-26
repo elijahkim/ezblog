@@ -3,8 +3,8 @@ require "monban/constraints/signed_out"
 
 Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
-  resources :users, only: [:new, :create]
-  resources :posts, except: :index do
+  resources :users, only: [:new, :create, :edit, :update]
+  resources :posts do
     resources :tags, except: [:index, :show]
   end
 
@@ -13,6 +13,6 @@ Rails.application.routes.draw do
   end
 
   constraints Monban::Constraints::SignedOut.new do
-    root "sessions#new"
+    root "posts#index"
   end
 end

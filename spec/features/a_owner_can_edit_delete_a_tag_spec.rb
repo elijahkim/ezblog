@@ -10,7 +10,7 @@ RSpec.feature "An owner can update tags" do
 
     visit post_path(posting)
     click_link "Edit Tag"
-    fill_in "Name", with: "Name"
+    fill_in "Tag", with: "Name"
     click_button "Update Tag"
 
     expect(page).to have_content "Name"
