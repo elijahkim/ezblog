@@ -1,6 +1,33 @@
 <h1><%= @post.title %></h1>
-<%= link_to "Edit Post", edit_post_path(@post) %>
-<%= button_to "Delete Post", post_path(@post), method: :delete %>
+<h3>Authored by: <%= @post.email %></h3>
+
+<% if can? :update, @post %>
+  <%= link_to "Edit Post", edit_post_path(@post) %>
+<% end %>
+<% if can? :destroy, @post %>
+  <%= button_to "Delete Post", post_path(@post), method: :delete %>
+<% end %>
+
+<% if can? :create, @tag %>
+  <%= render "tags/form", post: @post, tag: @tag %>
+<% end %>
+<h3>Tags</h3>
+<ul class="tags">
+  <% @post.tags.each do |tag| %>
+    <li>
+      <p><%= tag.name %></p>
+      <p>
+        <% if can? :edit, @tag %>
+          <%= link_to "Edit Tag", edit_post_tag_path(@post, tag) %>
+        <% end %>
+        <% if can? :destroy, @tag %>
+          <%= link_to "Delete Tag", post_tag_path(@post, tag), method: :delete %>
+        <% end %>
+      </p>
+    </li>
+  <% end %>
+</ul>
+
 <div class="content">
   <%= @post.content %>
 </div>

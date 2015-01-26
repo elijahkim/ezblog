@@ -10,6 +10,7 @@
   </head>
   <body class="<%= body_class %>">
     <div class="nav">
+      <%= link_to "Home", root_path %>
       <% if signed_in? %>
         <%= link_to "Sign out", session_path, method: :delete %>
       <% else %>
