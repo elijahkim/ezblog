@@ -38,6 +38,14 @@ class TagsController < ApplicationController
     end
   end
 
+  def index
+    @tags = Tag.all
+  end
+
+  def show
+    tag
+  end
+
   private
 
   def tag_params

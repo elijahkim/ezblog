@@ -12,6 +12,7 @@
     <div class="nav">
       <%= link_to "Home", root_path %>
       <%= link_to "Posts", posts_path %>
+      <%= link_to "Tags", tags_path %>
       <div class="sign-in">
       <% if signed_in? %>
         <%= link_to "Sign out", session_path, method: :delete %>

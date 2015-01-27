@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :posts do
     resources :tags, except: [:index, :show]
   end
+  resources :tags, only: [:index, :show]
 
   constraints Monban::Constraints::SignedIn.new do
     root "dashboards#show", as: :dashboard
