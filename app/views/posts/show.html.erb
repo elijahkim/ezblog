@@ -1,5 +1,6 @@
 <h1><%= @post.title %></h1>
-<h3>Authored by: <%= @post.email %></h3>
+<h4>Authored by: <%= @post.email %></h4>
+<p><%= time_ago_in_words(@post.created_at) %> ago</p>
 
 <% if can? :update, @post %>
   <%= link_to "Edit Post", edit_post_path(@post) %>
@@ -8,10 +9,15 @@
   <%= button_to "Delete Post", post_path(@post), method: :delete %>
 <% end %>
 
+<div class="content">
+  <%= @post.content %>
+</div>
+
 <% if can? :create, @tag %>
   <%= render "tags/form", post: @post, tag: @tag %>
 <% end %>
-<h3>Tags</h3>
+
+<h5>Tags</h5>
 <ul class="tags">
   <% @post.tags.each do |tag| %>
     <li>
@@ -27,7 +33,3 @@
     </li>
   <% end %>
 </ul>
-
-<div class="content">
-  <%= @post.content %>
-</div>

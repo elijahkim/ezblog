@@ -1,10 +1,12 @@
-<h3 class="post-title"><%= link_to post.title, post %></h3>
-<h4>Authored by: <%= post.email %></h4>
-<p><%= time_ago_in_words(post.created_at) %> ago</p>
-<div class="post-content">
-  <%= post.content %>
-</div>
-<div class="tags">
-  <h6>Tags</h6>
-  <%= render post.tags %>
+<div class="post">
+  <h3 class="post-title"><%= link_to post.title, post %></h3>
+  <h4>Authored by: <%= post.email %></h4>
+  <p><%= time_ago_in_words(post.created_at) %> ago</p>
+  <div class="post-content">
+    <%= post.content %>
+  </div>
+  <div class="tags">
+    <h6>Tags</h6>
+    <%= render post.tags %>
+  </div>
 </div>
